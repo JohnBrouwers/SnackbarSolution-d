@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Snackbar.API.Data;
 
 namespace Snackbar.API.Migrations
 {
     [DbContext(typeof(SnackbarDbContext))]
-    partial class SnackbarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220403093526_createDbAndAddSnacks")]
+    partial class createDbAndAddSnacks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,20 +33,11 @@ namespace Snackbar.API.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Snacks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Patatje Speciaal",
-                            Price = 2.75m
-                        });
                 });
 #pragma warning restore 612, 618
         }

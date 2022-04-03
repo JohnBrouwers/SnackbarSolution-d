@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Snackbar.Core.Entities;
+using Snackbar.MVC.Models;
+using Snackbar.MVC.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SnackbarMVC
+namespace Snackbar.MVC
 {
     public class Startup
     {
@@ -25,11 +24,12 @@ namespace SnackbarMVC
         {
             services.AddControllersWithViews();
 
-            //https://localhost:44353/api/Snacks
-
             services.AddHttpClient("SnacksApi", options => {
-                options.BaseAddress = new System.Uri("https://localhost:44353/api/");
+                options.BaseAddress = new Uri(Configuration.GetValue<string>("SnackbarApiUrl")); //het baseaddress bevat niet de controllernaam, zodoende kun je verschillende controllers aanspreken en verschillencde data ophalen
+                options.DefaultRequestHeaders.Add("UserAgent", "SnackbarMVC");
             });
+
+            services.AddScoped<IApiService<Snack>, ApiService<Snack>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

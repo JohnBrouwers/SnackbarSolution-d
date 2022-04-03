@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using SnackbarAPI.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Snackbar.Core.Entities;
 
-namespace SnackbarAPI.Data
+namespace Snackbar.API.Data
 {
     public class SnackbarDbContext : DbContext
     {
@@ -14,6 +10,18 @@ namespace SnackbarAPI.Data
         {
         }
 
-        public DbSet<SnackbarAPI.Data.Entities.Snack> Snacks { get; set; }
+        public DbSet<Snack> Snacks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Snack>(s => {
+                s.Property(s => s.Name).IsRequired().HasMaxLength(SnackValidation.NameMaxLength);
+                s.Property(s => s.Price).IsRequired().HasPrecision(5, 2);
+
+                s.HasData(new Snack { Id = 1, Name = "Patatje Speciaal", Price = 2.75M });
+            });
+        }
     }
 }

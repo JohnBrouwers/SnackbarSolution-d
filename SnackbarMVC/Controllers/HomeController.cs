@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SnackbarMVC.Models;
+using Snackbar.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SnackbarMVC.Controllers
+namespace Snackbar.MVC.Controllers
 {
     public class HomeController : Controller
     {

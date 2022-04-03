@@ -1,6 +1,5 @@
-using System;
 
-namespace SnackbarMVC.Models
+namespace Snackbar.MVC.Models
 {
     public class ErrorViewModel
     {

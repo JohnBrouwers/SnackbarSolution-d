@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SnackbarAPI.Data;
+using Snackbar.API.Data;
 
-namespace SnackbarAPI.Migrations
+namespace Snackbar.API.Migrations
 {
     [DbContext(typeof(SnackbarDbContext))]
-    [Migration("20220329082715_createSnackTableAndDb")]
-    partial class createSnackTableAndDb
+    [Migration("20220403094545_snackPricePrecisionAndSnackSeed")]
+    partial class snackPricePrecisionAndSnackSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace SnackbarAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SnackbarAPI.Data.Entities.Snack", b =>
+            modelBuilder.Entity("Snackbar.Core.Entities.Snack", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,15 +29,24 @@ namespace SnackbarAPI.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Snacks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Patatje Speciaal",
+                            Price = 2.75m
+                        });
                 });
 #pragma warning restore 612, 618
         }

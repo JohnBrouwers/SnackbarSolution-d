@@ -1,20 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using SnackbarAPI.Data;
+using Snackbar.API.Data;
 
-namespace SnackbarAPI
+namespace Snackbar.API
 {
     public class Startup
     {
@@ -37,6 +30,14 @@ namespace SnackbarAPI
 
             services.AddDbContext<SnackbarDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SnackbarDbContext")));
+            
+            services.AddCors(options => {
+                options.AddPolicy("allow", 
+                    builder=> { 
+                    builder.AllowAnyMethod(); 
+                    builder.AllowAnyOrigin(); 
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +51,8 @@ namespace SnackbarAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
 
             app.UseRouting();
 

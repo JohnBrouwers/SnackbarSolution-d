@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Snackbar.API.Data;
+using Snackbar.Core.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SnackbarAPI.Data;
-using SnackbarAPI.Data.Entities;
 
-namespace SnackbarAPI.Controllers
+namespace Snackbar.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,8 +22,7 @@ namespace SnackbarAPI.Controllers
         // GET: api/Snacks
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Snack>>> GetSnack()
-        
-            {
+        {
             return await _context.Snacks.ToListAsync();
         }
 

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackbarAPI", "SnackbarAPI\SnackbarAPI.csproj", "{C6962D36-F48E-43BE-975D-7A577AB4DB80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snackbar.API", "SnackbarAPI\Snackbar.API.csproj", "{C6962D36-F48E-43BE-975D-7A577AB4DB80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackbarMVC", "SnackbarMVC\SnackbarMVC.csproj", "{34C05FCD-6B65-4998-9A79-C381C939E121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snackbar.MVC", "SnackbarMVC\Snackbar.MVC.csproj", "{34C05FCD-6B65-4998-9A79-C381C939E121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snackbar.Core", "Snackbar.Core\Snackbar.Core.csproj", "{8D437613-37E8-4D2A-B70B-AA5BCDC6FECC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{34C05FCD-6B65-4998-9A79-C381C939E121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34C05FCD-6B65-4998-9A79-C381C939E121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34C05FCD-6B65-4998-9A79-C381C939E121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D437613-37E8-4D2A-B70B-AA5BCDC6FECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D437613-37E8-4D2A-B70B-AA5BCDC6FECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D437613-37E8-4D2A-B70B-AA5BCDC6FECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D437613-37E8-4D2A-B70B-AA5BCDC6FECC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

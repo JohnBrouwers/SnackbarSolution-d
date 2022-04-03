@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace SnackbarAPI.Data.Entities
+﻿
+namespace Snackbar.Core.Entities
 {
     public class Snack
     {
@@ -8,10 +7,7 @@ namespace SnackbarAPI.Data.Entities
 
         public decimal Price { get; set; }
 
-
-        [StringLength(100, MinimumLength = 2), Required]
         public string Name { get; set; }
-
 
     }
 }
