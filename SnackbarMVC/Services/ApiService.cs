@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Snackbar.MVC.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
